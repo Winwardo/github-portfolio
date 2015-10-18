@@ -1,0 +1,57 @@
+<head>
+  <title>github-portfolio</title>
+  <link rel="stylesheet" type="text/css"
+      ahref="http://yegor256.github.io/tacit/tacit.min.css"/>
+</head>
+
+<body>
+  <h1>Welcome to Meteor!</h1>
+
+  {{> hello}}
+
+  {{> orderedRepos}}
+
+  <hr>
+
+  {{> activeRepos}}
+
+  <hr>
+
+  {{> loginButtons}}
+</body>
+
+<template name="hello">
+  <button>Sync repos</button>
+  <p>You've pressed the button {{counter}} times.</p>
+</template>
+
+<template name="repos">
+	<h1>All repos:</h1>
+	<ul>
+	{{#each allRepos}}
+		{{#with data}}
+		<li><a href="{{html_url}}">{{full_name}}</a></li>
+		{{/with}}
+	{{/each}}
+	</ul>	
+</template>
+
+<template name="orderedRepos">
+	<h1>Ordered repos</h1>
+	<ul id="sortableRepos">
+	{{#each orderedRepos}}
+		<li data-id={{data.id}}><input type='checkbox' class='active' {{checkedIfActive}}>
+		<i class="fa fa-star"></i> {{data.stargazers_count}}
+			<a href="{{data.html_url}}">{{data.full_name}}</a></li>
+	{{/each}}
+	</ul>
+</template>
+
+<template name="activeRepos">
+	<h1>Active repos</h1>
+	<ul>
+	{{#each activeRepos}}
+		<li><a href="{{data.html_url}}">{{data.full_name}}</a></li>
+	{{/each}}
+	</ul>
+</template>

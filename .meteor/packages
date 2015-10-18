@@ -31,3 +31,5 @@ fortawesome:fontawesome
 
 aldeed:collection2
 dburles:collection-helpers
+
+iron:router

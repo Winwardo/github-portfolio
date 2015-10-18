@@ -13,14 +13,9 @@
 	<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
 </head>
 <body id="top">
+	<a href="/">index</a>
+	<a href="/second">two</a>
 	{{> header}}
-	{{> one}}
-	{{> two}}
-	{{> three}}
-	{{> example}}
-
-	{{> footer}}
-
 	<!-- Scripts -->
 	<script src="assets/js/jquery.min.js"></script>
 	<script src="assets/js/jquery.scrolly.min.js"></script>
@@ -29,3 +24,8 @@
 	<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
 	<script src="assets/js/main.js"></script>
 </body>
+
+<template name="mainLayout">
+	{{> yield}}
+	{{> footer}}
+</template>

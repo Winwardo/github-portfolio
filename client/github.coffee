@@ -3,8 +3,6 @@ Template.sync.events
 		if Meteor.user()
 			Meteor.call("syncRepos")
 
-
-
 Template.activeRepos.helpers
 	'activeRepos': ->
 		Repos.activeForUser()

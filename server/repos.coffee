@@ -1,28 +1,29 @@
-Repos = new Meteor.Collection("repos")
-
 Meteor.methods
 	"syncRepos": ->
 		console.log("Syncing repos");
-		userId = Meteor.userId();
-		user = Meteor.users.findOne(userId);
-		gitusername = user.services.github.username;
+		userId = Meteor.userId()
+		user = Meteor.users.findOne userId
+		gitusername = user.services.github.username
 
 		github = new GitHub
 			version: "3.0.0",
-			timeout: 5000
+			timeout: 5000,
 
 		result = github.repos.getFromUser
 			user: gitusername
 
+		sortedResult = _.sortBy result, (repo) -> -repo.stargazers_count
+
 		Repos.remove({userId: userId})
 
-		for repo in result
+		for x in [0...sortedResult.length]
+			repo = sortedResult[x]
 			Repos.insert
 				userId: userId,
 				data: repo,
 				repoId: repo.id,
 				isActive: false,
-				sortId: -repo.stargazers_count,
+				sortId: x,
 
 	"setIsActive": (repoId, isActive) ->
 		Repos.upsert

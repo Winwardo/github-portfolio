@@ -7,7 +7,7 @@
 <body>
   <h1>Welcome to Meteor!</h1>
 
-  {{> hello}}
+  {{> sync}}
 
   {{> orderedRepos}}
 
@@ -20,20 +20,8 @@
   {{> loginButtons}}
 </body>
 
-<template name="hello">
+<template name="sync">
   <button>Sync repos</button>
-  <p>You've pressed the button {{counter}} times.</p>
-</template>
-
-<template name="repos">
-	<h1>All repos:</h1>
-	<ul>
-	{{#each allRepos}}
-		{{#with data}}
-		<li><a href="{{html_url}}">{{full_name}}</a></li>
-		{{/with}}
-	{{/each}}
-	</ul>	
 </template>
 
 <template name="orderedRepos">

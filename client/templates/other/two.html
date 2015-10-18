@@ -2,26 +2,17 @@
 	<section id="two" class="wrapper">
 		<div class="inner alt">
 			<section class="spotlight">
-				<div class="image"><img src="images/pic01.jpg" alt="" /></div>
 				<div class="content">
-					<h3>Magna sed ultrices</h3>
-					<p>Morbi mattis ornare ornare. Duis quam turpis, gravida at leo elementum elit fusce accumsan dui libero, quis vehicula lectus ultricies eu. In convallis amet leo non sapien iaculis efficitur consequat lorem ipsum.</p>
+					<p>
+						{{#if currentUser}}
+							{{> orderRepos}}
+						{{/if}}
+					</p>
 				</div>
 			</section>
-			<section class="spotlight">
-				<div class="image"><img src="images/pic02.jpg" alt="" /></div>
-				<div class="content">
-					<h3>Ultrices nullam aliquam</h3>
-					<p>Morbi mattis ornare ornare. Duis quam turpis, gravida at leo elementum elit fusce accumsan dui libero, quis vehicula lectus ultricies eu. In convallis amet leo non sapien iaculis efficitur consequat lorem ipsum.</p>
-				</div>
-			</section>
-			<section class="spotlight">
-				<div class="image"><img src="images/pic03.jpg" alt="" /></div>
-				<div class="content">
-					<h3>Aliquam sed magna</h3>
-					<p>Morbi mattis ornare ornare. Duis quam turpis, gravida at leo elementum elit fusce accumsan dui libero, quis vehicula lectus ultricies eu. In convallis amet leo non sapien iaculis efficitur consequat lorem ipsum.</p>
-				</div>
-			</section>
+			{{#each activeRepos}}
+				{{> repoSimple}}
+			{{/each}}
 			<section class="special">
 				<ul class="icons labeled">
 					<li><span class="icon fa-camera-retro"><span class="label">Ipsum lorem accumsan</span></span></li>

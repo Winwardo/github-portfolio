@@ -1,0 +1,10 @@
+<template name="orderRepos">
+	<h1>Order and select repositories</h1>
+	<ul id="sortableRepos">
+	{{#each orderedRepos}}
+		<li data-id={{data.id}}><input type='checkbox' class='active' {{checkedIfActive}}>
+		<i class="fa fa-star"></i> {{data.stargazers_count}}
+			<a href="{{data.html_url}}">{{data.full_name}}</a></li>
+	{{/each}}
+	</ul>
+</template>

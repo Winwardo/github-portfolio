@@ -8,6 +8,7 @@ Schemas.Repo = new SimpleSchema
 	data:
 		type: Object
 		label: "Repo information"
+		blackbox: true
 	repoId:
 		type: Number
 		label: "Id of repo, as given by GitHub"

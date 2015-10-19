@@ -10,3 +10,7 @@ Template.userrepos.events
 	"click button": ->
 		Meteor.call "syncReposForUsername", @username
 		Meteor.call "syncUser", @username
+
+Template.userpage.helpers
+	"settitle": ->
+		document.title = @username + "'s GitHub portfolio"

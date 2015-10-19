@@ -1,4 +1,5 @@
 <template name="userpage">
+	{{settitle}}
 	{{> userinfo}}
 	{{> userrepos}}	
 </template>
@@ -37,9 +38,9 @@
 			{{else}}
 				<section class="spotlight">
 					No repos exist for this user `{{username}}`. Note that usernames ARE case-sensitive. e.g. <code>winwardo</code> and <code>Winwardo</code> are different.<br>
-					<button>Sync this user!</button>
 				</section>
 			{{/if}}
+			<button>Sync this user!</button>
 		</div>
 	</section>
 </template>

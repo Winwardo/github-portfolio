@@ -19,6 +19,6 @@
 	padding-right: 1em;
 }
 
-.repo-customise input[type=text] {
+.repo-customise input[type=text], .repo-customise textarea {
 	margin-bottom: -30px;
 }

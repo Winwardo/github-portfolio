@@ -13,7 +13,8 @@ Template.orderRepos.rendered = ->
 		)
 
 Template.orderRepos.events
-	'click #save': ->		
+	'click #save': ->
+		NProgress.start()
 		$("#sortableRepos tbody tr").each (index) ->
 			t = $(@)
 
@@ -23,6 +24,12 @@ Template.orderRepos.events
 			imageUrl = t.find(".imageUrl").val()
 
 			Meteor.call "updateRepoInfo", id, isChecked, index, description, imageUrl
+		NProgress.done()
+	'click #resync': ->
+		Meteor.call("syncRepos")
+	'click #delete': ->
+		console.log "what"
+		Meteor.call("clearRepos")
 
 Template.sync.events
 	'click button': ->

@@ -1,9 +1,14 @@
 Meteor.methods
+	"clearRepos": ->
+		console.log "byebye"
+		Repos.remove
+			username: Users.getCurrentUsername()
+
 	"syncRepos": ->
 		userId = Meteor.userId()
 		user = Meteor.users.findOne userId
 		gitusername = user.services.github.username
-		Meteor.call "syncReposForUsername", username
+		Meteor.call "syncReposForUsername", gitusername
 
 	"syncReposForUsername": (username) ->
 		result = github.repos.getFromUser

@@ -1,5 +1,24 @@
 @Repos = new Meteor.Collection "repos"
 
+@Schemas = {}
+Schemas.Repo = new SimpleSchema
+	username:
+		type: String
+		label: "Username"
+	data:
+		type: Object
+		label: "Repo information"
+	repoId:
+		type: Number
+		label: "Id of repo, as given by GitHub"
+	isActive:
+		type: Boolean
+		label: "Should this repo be displayed"
+	sortId:
+		type: Number
+
+Repos.attachSchema(Schemas.Repo)
+
 Repos.allForUser = ->
 	Repos.find
 		userId: Meteor.userId(),

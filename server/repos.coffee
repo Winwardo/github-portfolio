@@ -11,7 +11,7 @@ Meteor.methods
 
 		sortedResult = _.sortBy result, (repo) -> -repo.stargazers_count
 
-		#Repos.remove({username: username})
+		Repos.remove({username: username})
 
 		for x in [0...sortedResult.length]
 			repo = sortedResult[x]

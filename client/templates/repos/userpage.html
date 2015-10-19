@@ -1,11 +1,12 @@
 <template name="userpage">
 	{{> userinfo}}
-	{{> userrepos}}	
+	{{> userrepos}}
+	{{> editpage}}
 </template>
 
 <template name="userinfo">
 	{{#with userinfo}}
-	<section id="one" class="wrapper style2 special" style="padding-top: 40px; padding-bottom: 16px;">
+	<section id="header" class="wrapper style2 special" style="padding-top: 64px; padding-bottom: 16px; height: auto; min-height: 0;">
 		<div class="">
 			<div class="image">
 				<img src="{{avatar_url}}" style="width: 256px;" alt="">
@@ -42,6 +43,21 @@
 				</section>
 			{{/if}}
 		</div>
-		<button>Sync this user!</button>
+	</section>
+</template>
+
+<template name="editpage">
+	<section id="three">
+		<div class="wrapper">
+			<div class="inner">
+				{{#if currentUser}}
+					<a href="/customise" class="button">Edit this page.</a><br><br>
+					{{> loginButtons}}
+				{{else}}
+					Is this you? Sign in and customise this page.<br>
+					{{> loginButtons}}
+				{{/if}}
+			</div>
+		</div>
 	</section>
 </template>

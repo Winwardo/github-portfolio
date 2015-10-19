@@ -19,18 +19,19 @@ Schemas.Repo = new SimpleSchema
 
 Repos.attachSchema(Schemas.Repo)
 
-Repos.allForCurrentUser = ->
+
+Repos.activeForGivenUser = (username) ->
 	Repos.find
-		userId: Meteor.userId(),
+		"username": username,
+		isActive: true,
 	,
 		sort:
 			sortId: 1,
 			full_name: 1
 
-Repos.activeForGivenUser = (username) ->
+Repos.allForCurrentUser = ->
 	Repos.find
-		"data.owner.login": username,
-		isActive: true,
+		"username": Users.getCurrentUsername(),
 	,
 		sort:
 			sortId: 1,

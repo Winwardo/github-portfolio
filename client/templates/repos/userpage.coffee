@@ -1,7 +1,12 @@
-Template.userpage.helpers
+Template.userrepos.helpers
 	"repos": ->
 		Repos.activeForGivenUser @username
 
-Template.userpage.events
+Template.userinfo.helpers
+	"userinfo": ->
+		GithubUsers.forUser @username
+
+Template.userrepos.events
 	"click button": ->
 		Meteor.call "syncReposForUsername", @username
+		Meteor.call "syncUser", @username

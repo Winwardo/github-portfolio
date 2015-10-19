@@ -6,16 +6,12 @@ Meteor.methods
 		Meteor.call "syncReposForUsername", username
 
 	"syncReposForUsername": (username) ->
-		github = new GitHub
-			version: "3.0.0",
-			timeout: 5000,
-
 		result = github.repos.getFromUser
 			user: username
 
 		sortedResult = _.sortBy result, (repo) -> -repo.stargazers_count
 
-		Repos.remove({username: username})
+		#Repos.remove({username: username})
 
 		for x in [0...sortedResult.length]
 			repo = sortedResult[x]

@@ -1,5 +1,33 @@
 <template name="userpage">
-	<button>Sync this user!</button>
+	{{> userinfo}}
+	{{> userrepos}}	
+</template>
+
+<template name="userinfo">
+	{{#with userinfo}}
+	<section id="one" class="wrapper style2 special">
+		<div class="">
+			<div class="image">
+				<img src="{{avatar_url}}" style="width: 256px;" alt="">
+			</div>
+			<div class="">
+				<header class="major">
+					<h2><a href="{{url}}">{{name}} / @{{login}}</a></h2>
+				</header>
+				<!--
+				<ul class="icons major">
+					<li><span class="icon fa-camera-retro"><span class="label">Shoot</span></span></li>
+					<li><span class="icon fa-refresh"><span class="label">Process</span></span></li>
+					<li><span class="icon fa-cloud"><span class="label">Upload</span></span></li>
+				</ul>
+				-->
+			</div>
+		</div>
+	</section>
+	{{/with}}
+</template>
+
+<template name="userrepos">
 	<section id="two" class="wrapper">
 		<div class="inner alt">
 			{{#if repos}}
@@ -8,7 +36,8 @@
 				{{/each}}
 			{{else}}
 				<section class="spotlight">
-					No repos exist for this user. Note that usernames ARE case-sensitive. e.g. <code>winwardo</code> and <code>Winwardo</code> are different.
+					No repos exist for this user `{{username}}`. Note that usernames ARE case-sensitive. e.g. <code>winwardo</code> and <code>Winwardo</code> are different.<br>
+					<button>Sync this user!</button>
 				</section>
 			{{/if}}
 		</div>

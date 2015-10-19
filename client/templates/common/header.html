@@ -1,6 +1,8 @@
 <template name="header">
 	<a href="/">index</a>
 	<a href="/customise">customise</a>
+	{{#if currentUser}}
+		<a href="/u/{{currentUser.services.github.username}}">see page</a>
+	{{/if}}
 	{{> loginButtons}}
-	<hr>
 </template>

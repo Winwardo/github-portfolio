@@ -23,7 +23,7 @@ Repos.attachSchema(Schemas.Repo)
 
 Repos.activeForGivenUser = (username) ->
 	Repos.find
-		"username": username,
+		"username": new RegExp(username, "i"),
 		isActive: true,
 	,
 		sort:
@@ -32,7 +32,7 @@ Repos.activeForGivenUser = (username) ->
 
 Repos.allForCurrentUser = ->
 	Repos.find
-		"username": Users.getCurrentUsername(),
+		"username": new RegExp(Users.getCurrentUsername(), "i"),
 	,
 		sort:
 			sortId: 1,

@@ -2,4 +2,4 @@
 
 GithubUsers.forUser = (username) ->
 	GithubUsers.findOne
-		"login": username
+		"login": new RegExp(username, "i")

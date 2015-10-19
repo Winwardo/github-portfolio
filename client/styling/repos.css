@@ -1,0 +1,20 @@
+.repo-title {
+	font-size: 2em;
+}
+
+.repo-title a {
+	border-bottom: 0;
+}
+
+.repo-meta {
+	list-style-type: none;	
+    margin: 0;
+    padding: 0;
+    font-size: 0.75em;
+}
+
+.repo-meta li {
+	display: inline;
+	padding-left: 0;
+	padding-right: 1em;
+}

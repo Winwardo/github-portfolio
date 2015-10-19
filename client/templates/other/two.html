@@ -1,15 +1,6 @@
 <template name="two">
 	<section id="two" class="wrapper">
 		<div class="inner alt">
-			<section class="spotlight">
-				<div class="content">
-					<p>
-						{{#if currentUser}}
-							{{> orderRepos}}
-						{{/if}}
-					</p>
-				</div>
-			</section>
 			{{#each activeRepos}}
 				{{> repoSimple}}
 			{{/each}}

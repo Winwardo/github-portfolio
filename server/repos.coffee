@@ -22,7 +22,7 @@ Meteor.methods
 				userId: userId,
 				data: repo,
 				repoId: repo.id,
-				isActive: false,
+				isActive: x < 5, # Automatically show the first 5 repositories
 				sortId: x,
 
 	"setIsActive": (repoId, isActive) ->

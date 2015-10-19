@@ -1,3 +1,7 @@
+<template name="customise">
+	{{> orderRepos}}
+</template>
+
 <template name="orderRepos">
 	<h1>Order and select repositories</h1>
 	
@@ -6,7 +10,7 @@
 		<li data-id="{{data.id}}">
 			<input type='checkbox' class='active' {{checkedIfActive}} id="check-{{data.id}}">
 			<label for="check-{{data.id}}">
-				<i class="fa fa-star"></i> {{data.stargazers_count}}
+				<span class="octicon octicon-star"></span> {{data.stargazers_count}}
 				<a href="{{data.html_url}}">{{data.full_name}}</a>
 			</label>
 		</li>

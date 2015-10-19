@@ -3,9 +3,16 @@
 		<div class="image"><img src="images/pic02.jpg" alt="" /></div>
 		<div class="content">			
 			<header>
-				<h2>
-					<a href="{{data.html_url}}">{{data.full_name}}</a>
-				</h2>
+				<div class="repo-title">
+					<a href="{{data.html_url}}">{{data.name}}
+					<span class="octicon octicon-link-external"></span>
+				</a>
+				</div>
+				<ul class="repo-meta">
+					<li><span class="octicon octicon-star"></span> {{data.stargazers_count}}</li>
+					<li><span class="octicon octicon-repo-forked"></span> {{data.forks_count}}</li>
+					<li><span class="octicon octicon-file-code"></span> {{data.language}}</li>
+				</ul>
 				<h5>{{data.description}}</h5>
 			</header>
 			<p>Morbi mattis ornare ornare. Duis quam turpis, gravida at leo elementum elit fusce accumsan dui libero, quis vehicula lectus ultricies eu. In convallis amet leo non sapien iaculis efficitur consequat lorem ipsum.</p>

@@ -1,6 +1,6 @@
 Template.orderRepos.helpers
 	'allRepos': ->
-		Repos.allForUser()
+		Repos.allForCurrentUser()
 	'checkedIfActive': ->
 		if @isActive then "checked" else ""
 
@@ -14,9 +14,6 @@ Template.orderRepos.events
 	'click .active': (e, template) ->
 		isChecked = $(e.target).is(":checked")
 		Meteor.call("setIsActive", this.data.id, isChecked)
-
-
-
 
 Template.sync.events
 	'click button': ->

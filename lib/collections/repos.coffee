@@ -17,6 +17,12 @@ Schemas.Repo = new SimpleSchema
 		label: "Should this repo be displayed"
 	sortId:
 		type: Number
+	description:
+		type: String
+		optional: true
+	imageUrl:
+		type: String
+		optional: true
 
 Repos.attachSchema(Schemas.Repo)
 

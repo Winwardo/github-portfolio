@@ -5,15 +5,31 @@
 <template name="orderRepos">
 	<h1>Order and select repositories</h1>
 	
-	<ul id="sortableRepos">
-	{{#each allRepos}}
-		<li data-id="{{data.id}}">
-			<input type='checkbox' class='active' {{checkedIfActive}} id="check-{{data.id}}">
-			<label for="check-{{data.id}}">
-				<span class="octicon octicon-star"></span> {{data.stargazers_count}}
-				<a href="{{data.html_url}}">{{data.full_name}}</a>
-			</label>
-		</li>
-	{{/each}}
-	</ul>
+	<button id="save">Save</button>
+
+	<form>
+	<table id="sortableRepos">
+		<thead>
+			<tr>
+				<th>Repository</th>
+				<th>Starred</th>
+				<th>Description</th>
+				<th>Image URL</th>
+			</tr>
+		</thead>
+		<tbody>
+			{{#each allRepos}}
+			<tr data-id="{{data.id}}">
+				<td>
+					<input type='checkbox' class='active' {{checkedIfActive}} id="check-{{data.id}}">
+					<label for="check-{{data.id}}"><a href="{{data.html_url}}">{{data.full_name}}</a></label>
+				</td>
+				<td>{{data.stargazers_count}}</td>
+				<td><input type="text" placeholder="Description..." class="description" value="{{description}}"></td>
+				<td><input type="text" placeholder="Custom image URL..." class="imageUrl" value="{{imageUrl}}"></td>
+			</tr>
+			{{/each}}
+		</tbody>
+	</table>
+	</form>
 </template>

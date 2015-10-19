@@ -5,15 +5,24 @@ Template.orderRepos.helpers
 		if @isActive then "checked" else ""
 
 Template.orderRepos.rendered = ->
-	$("#sortableRepos").sortable
-		update: (event, ui) ->
-			$("#sortableRepos > li").each (index) ->
-				Meteor.call("setSortValue", $(this).data("id"), index)
+	$("#sortableRepos tbody").sortable(
+		helper: (e, ui) -> # http://www.foliotek.com/devblog/make-table-rows-sortable-using-jquery-ui-sortable/
+			ui.children().each ->
+				$(@).width($(@).width())
+			ui
+		)
 
 Template.orderRepos.events
-	'click .active': (e, template) ->
-		isChecked = $(e.target).is(":checked")
-		Meteor.call("setIsActive", this.data.id, isChecked)
+	'click #save': ->		
+		$("#sortableRepos tbody tr").each (index) ->
+			t = $(@)
+
+			id = t.data("id")
+			isChecked = t.find(".active").is(":checked")
+			description = t.find(".description").val()
+			imageUrl = t.find(".imageUrl").val()
+
+			Meteor.call "updateRepoInfo", id, isChecked, index, description, imageUrl
 
 Template.sync.events
 	'click button': ->

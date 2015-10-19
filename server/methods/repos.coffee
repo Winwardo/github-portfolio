@@ -39,4 +39,15 @@ Meteor.methods
 			$set:
 				'sortId': sortValue
 				
-			
+	"updateRepoInfo": (repoId, isActive, sortValue, description, imageUrl) ->
+		Repos.update
+			'username': Users.getCurrentUsername(),
+			'repoId': repoId
+		,
+			$set:
+				'isActive': isActive,
+				'sortId': sortValue,
+				'description': description,
+				'imageUrl': imageUrl
+
+

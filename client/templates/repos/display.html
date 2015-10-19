@@ -1,6 +1,6 @@
 <template name="repoSimple">
 	<section class="spotlight">
-		<div class="image"><img src="https://placeholdit.imgix.net/~text?txtsize=60&txt={{data.name}}&w=320&h=320&txttrack=0" alt="" /></div>
+		<div class="image"><img src="{{image}}" alt="" /></div>
 		<div class="content">			
 			<header>
 				<div class="repo-title">
@@ -15,7 +15,7 @@
 				</ul>
 				<h5>{{data.description}}</h5>
 			</header>
-			<p>Morbi mattis ornare ornare. Duis quam turpis, gravida at leo elementum elit fusce accumsan dui libero, quis vehicula lectus ultricies eu. In convallis amet leo non sapien iaculis efficitur consequat lorem ipsum.</p>
+			<p>{{description}}</p>
 		</div>
 	</section>
 </template>

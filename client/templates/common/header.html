@@ -1,6 +1,7 @@
 <template name="header">
 	<a href="/">index</a>
 	<a href="/customise">customise</a>
+	<a href="/example">example</a>
 	{{#if currentUser}}
 		<a href="/u/{{currentUser.services.github.username}}">see page</a>
 	{{/if}}

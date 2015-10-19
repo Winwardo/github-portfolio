@@ -23,16 +23,16 @@ Meteor.methods
 				sortId: x,
 
 	"setIsActive": (repoId, isActive) ->
-		Repos.upsert
-			'userId': Meteor.userId(),
+		Repos.update
+			'username': Users.getCurrentUsername(),
 			'repoId': repoId
 		,
 			$set: 
 				'isActive': isActive
 
 	"setSortValue": (repoId, sortValue) ->
-		Repos.upsert
-			'userId': Meteor.userId(),
+		Repos.update
+			'username': Users.getCurrentUsername(),
 			'repoId': repoId
 		,
 			$set:

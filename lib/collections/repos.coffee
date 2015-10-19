@@ -15,3 +15,11 @@ Repos.activeForUser = ->
 		sort:
 			sortId: 1,
 			full_name: 1
+Repos.activeForGivenUser = (username) ->
+	Repos.find
+		"data.owner.login": username,
+		isActive: true,
+	,
+		sort:
+			sortId: 1,
+			full_name: 1

@@ -1,3 +1,16 @@
 <template name="userpage">
-	{{username}}
+	<button>Sync this user!</button>
+	<section id="two" class="wrapper">
+		<div class="inner alt">
+			{{#if repos}}
+				{{#each repos}}
+					{{> repoSimple}}
+				{{/each}}
+			{{else}}
+				<section class="spotlight">
+					No repos exist for this user. Note that usernames ARE case-sensitive. e.g. <code>winwardo</code> and <code>Winwardo</code> are different.
+				</section>
+			{{/if}}
+		</div>
+	</section>
 </template>

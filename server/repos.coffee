@@ -1,25 +1,26 @@
 Meteor.methods
 	"syncRepos": ->
-		console.log("Syncing repos");
 		userId = Meteor.userId()
 		user = Meteor.users.findOne userId
 		gitusername = user.services.github.username
+		Meteor.call "syncReposForUsername", username
 
+	"syncReposForUsername": (username) ->
 		github = new GitHub
 			version: "3.0.0",
 			timeout: 5000,
 
 		result = github.repos.getFromUser
-			user: gitusername
+			user: username
 
 		sortedResult = _.sortBy result, (repo) -> -repo.stargazers_count
 
-		Repos.remove({userId: userId})
+		Repos.remove({username: username})
 
 		for x in [0...sortedResult.length]
 			repo = sortedResult[x]
 			Repos.insert
-				userId: userId,
+				username: username,
 				data: repo,
 				repoId: repo.id,
 				isActive: x < 5, # Automatically show the first 5 repositories

@@ -1,7 +1,11 @@
 <template name="userpage">
-	{{> userinfo}}
-	{{> userrepos}}
-	{{> editpage}}
+	{{#if userHasInfo}}
+		{{> userinfo}}
+		{{> userrepos}}
+		{{> editpage}}
+	{{else}}
+		{{> waitingForSync}}
+	{{/if}}
 </template>
 
 <template name="userinfo">
@@ -50,13 +54,29 @@
 	<section id="three">
 		<div class="wrapper">
 			<div class="inner">
-				{{#if currentUser}}
-					<a href="/customise" class="button">Edit this page.</a><br><br>
-					{{> loginButtons}}
-				{{else}}
-					Is this you? Sign in and customise this page.<br>
-					{{> loginButtons}}
-				{{/if}}
+				<ul class="actions fit">
+					<li>
+						{{#if currentUser}}
+							<a href="/customise" class="button special fit">Customise your portfolio.</a>
+						{{else}}
+							Is this you? Sign in and customise this page.<br>
+						{{/if}}
+					</li>						
+					<li>
+						{{> loginButtons}}
+					</li>
+					<li><a href="/" id="delete" class="button fit">Homepage</a></li>
+				</ul>				
+			</div>
+		</div>
+	</section>
+</template>
+
+<template name="waitingForSync">
+	<section id="one">
+		<div class="wrapper">
+			<div class="inner">
+				<i class="fa fa-spin fa-refresh"></i>&nbsp;&nbsp;&nbsp;Attempting to sync data for {{username}}.				
 			</div>
 		</div>
 	</section>

@@ -12,3 +12,13 @@ Template.userrepos.events
 	"click button": ->
 		Meteor.call "syncReposForUsername", @username
 		Meteor.call "syncUser", @username
+
+Template.userpage.helpers
+	"userHasInfo": ->
+		user = GithubUsers.forUser @username
+		if user
+			return true
+		else
+			Meteor.call "syncReposForUsername", @username
+			Meteor.call "syncUser", @username
+			return false

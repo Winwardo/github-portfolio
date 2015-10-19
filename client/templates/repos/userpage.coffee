@@ -4,13 +4,11 @@ Template.userrepos.helpers
 
 Template.userinfo.helpers
 	"userinfo": ->
-		GithubUsers.forUser @username
+		profileInfo = GithubUsers.forUser @username
+		document.title = profileInfo.name + "'s GitHub portfolio"
+		profileInfo
 
 Template.userrepos.events
 	"click button": ->
 		Meteor.call "syncReposForUsername", @username
 		Meteor.call "syncUser", @username
-
-Template.userpage.helpers
-	"settitle": ->
-		document.title = @username + "'s GitHub portfolio"

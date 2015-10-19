@@ -1,35 +1,42 @@
 <template name="customise">
-	{{> orderRepos}}
+	<div class="wrapper">
+		<div class="inner">
+			{{> orderRepos}}
+		</div>
+	</div>
 </template>
 
 <template name="orderRepos">
-	<h1>Order and select repositories</h1>
-	
-	<button id="save">Save</button>
-
 	<form>
-	<table id="sortableRepos">
-		<thead>
-			<tr>
-				<th>Repository</th>
-				<th>Starred</th>
-				<th>Description</th>
-				<th>Image URL</th>
-			</tr>
-		</thead>
-		<tbody>
-			{{#each allRepos}}
-			<tr data-id="{{data.id}}">
-				<td>
-					<input type='checkbox' class='active' {{checkedIfActive}} id="check-{{data.id}}">
-					<label for="check-{{data.id}}"><a href="{{data.html_url}}">{{data.full_name}}</a></label>
-				</td>
-				<td>{{data.stargazers_count}}</td>
-				<td><input type="text" placeholder="Description..." class="description" value="{{description}}"></td>
-				<td><input type="text" placeholder="Custom image URL..." class="imageUrl" value="{{imageUrl}}"></td>
-			</tr>
-			{{/each}}
-		</tbody>
-	</table>
+		<table id="sortableRepos">
+			<thead>
+				<tr>
+					<th>Repository</th>
+					<th>Starred</th>
+					<th>Description</th>
+					<th>Image URL</th>
+				</tr>
+			</thead>
+			<tbody>
+				{{#each allRepos}}
+				<tr data-id="{{data.id}}" class="repo-customise">
+					<td>
+						<input type='checkbox' class='active' {{checkedIfActive}} id="check-{{data.id}}">
+						<label for="check-{{data.id}}"><a href="{{data.html_url}}">{{data.full_name}}</a></label>
+					</td>
+					<td>{{data.stargazers_count}}</td>
+					<td><input type="text" placeholder="Description..." class="description" value="{{description}}"></td>
+					<td><input type="text" placeholder="Custom image URL..." class="imageUrl" value="{{imageUrl}}"></td>
+				</tr>
+				{{/each}}
+			</tbody>
+		</table>
+
+		<div class="content">
+			<ul class="actions fit">
+				<li><a href="#" id="save" class="button special fit">Save</a></li>
+				<li><a href="/u/{{currentUsername}}" class="button fit">View portfolio</a></li>
+			</ul>
+		</div>
 	</form>
 </template>
